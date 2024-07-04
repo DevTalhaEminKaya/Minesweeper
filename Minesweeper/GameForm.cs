@@ -138,8 +138,8 @@ namespace Minesweeper
                 for (int c = 0; c < cols; c++)
                 {
                     Button button = new Button();
-                    button.Width = 40;
-                    button.Height = 40;
+                    button.Width = 50;
+                    button.Height = 50;
                     button.Location = new Point(r * button.Height, c * button.Width);
                     button.Tag = new Point(r, c);
                     button.BackColor = Color.Green;

@@ -98,6 +98,7 @@
             txtUserName.Name = "txtUserName";
             txtUserName.Size = new Size(300, 16);
             txtUserName.TabIndex = 5;
+            txtUserName.TextAlign = HorizontalAlignment.Center;
             // 
             // lbl2
             // 
