@@ -29,6 +29,7 @@ namespace Minesweeper
         private int mineCount;
         private int flags;
         private int time;
+        private int elapsedTime;
 
         public string name;
         public Difficulty difficulty;
@@ -172,16 +173,22 @@ namespace Minesweeper
 
             if (CheckWin())
             {
+                MessageBox.Show("Congratulations, you won!");
+                timer.Enabled = false;
+
                 string projectDirectory = AppDomain.CurrentDomain.BaseDirectory;
                 string configFilePath = Path.Combine(projectDirectory, "TopList.csv");
 
-                if (!File.Exists(configFilePath))
+                using (StreamWriter sw = new StreamWriter(configFilePath))
                 {
-                    File.Create(configFilePath);
-                }
+                    if (!File.Exists(configFilePath))
+                    {
+                        File.Create(configFilePath);
+                        sw.WriteLine("username;time;difficulty");
+                    }
 
-                MessageBox.Show("Congratulations, you won!");
-                timer.Enabled = false;
+                    sw.WriteLine(name + ";" + (time - elapsedTime).ToString() + ";" + difficulty);
+                }
             }
         }
 
